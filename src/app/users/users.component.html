@@ -1,0 +1,162 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<head>
+  <title>User Panel</title>
+</head>
+
+<div class="header">
+  <title>User Panel</title>
+  <h1>
+    Welcome, {{ User.username }}!
+  </h1>
+  <table class="navbarHeader">
+    <tr>
+      <th>
+        <a href="recipe">Recipes</a>
+      </th>
+      <th>
+        <a href="register">Register</a>
+      </th>
+    </tr>
+  </table>
+</div>
+
+<nav class="tableSwap">
+  <img src="/assets/images/RecipeButton.png" id="recipesButton" (click)="recipeClicked()"/>
+  <img src="/assets/images/EquipmentButton.png" id="equipmentButton" (click)="equipmentClicked()"/>
+  <img src="/assets/images/IngredientsButton.png" id="ingredientsButton" (click)="ingredientsClicked()"/>
+</nav>
+
+
+<!-- ul -->
+<div class="divTables" id="recipediv" [class.hidden]="showEquipment || showIngredients">
+  <h2 class="tableHeaders">Stored Recipes</h2>
+  <table>
+    <tr>
+      <th>
+        Recipe Link
+      </th>
+      <th>
+        Ingredients
+      </th>
+      <th>
+        Equipment
+      </th>
+      <th>
+        Remove
+      </th>
+    </tr>
+    <tr>
+      <th>
+        <a href="https://www.foodnetwork.com/recipes/food-network-kitchen/ultimate-ham-sandwich-recipe-2105834">
+          Sandwich
+          <!--Yes, I realize I don't have the ingredients right.-->
+        </a>
+      </th>
+      <th>
+        Bread, Ham
+      </th>
+      <th>
+        None
+      </th>
+      <th>
+        <a>Remove</a>
+      </th>
+    </tr>
+  </table>
+</div>
+
+<div class="divTables" id="equipmentdiv" [class.hidden]="!showEquipment">
+    <h2 class="tableHeaders">Equipment</h2>
+
+    <form>
+      <table>
+        <tr>
+          <th>Add Equipment: </th><th><input type="text"></th>
+        </tr>
+      </table>
+      <input type="submit" value="Add">
+
+    </form>
+    <br>
+    <table>
+      <tr>
+        <th>
+          Equipment
+        </th>
+        <th>
+          Remove
+        </th>
+      </tr>
+
+        <tr>
+          <th>
+            Toaster
+          </th>
+          <th>
+            <input class="deleteButton" type="submit" value="Delete">
+          </th>
+        </tr>
+
+    </table>
+</div>
+
+<div class="divTables" id="ingredientdiv" [class.hidden]="!showIngredients">
+    <h2 class="tableHeaders">Ingredients</h2>
+
+    <form>
+      <table>
+        <tr>
+          <th>Add Ingredient</th> <th><input type="text"></th>
+        </tr>
+        <tr>
+        <th>Quantity</th> <th><input type="text"></th>
+        </tr>
+        <tr>
+          <th>Units</th> <th><input type="text"></th>
+        </tr>
+    </table>
+      <input type="submit" value="Add">
+    </form>
+      <br>
+    <table>
+    <tr>
+      <th>
+        Ingredient
+      </th>
+      <th>
+        Amount
+      </th>
+      <th>
+        Unit
+      </th>
+      <th>
+        Update
+      </th>
+      <th>
+        Remove
+      </th>
+    </tr>
+
+    <tr>
+      <th>
+        Bread
+      </th>
+      <th>
+        <input type="text">
+      </th>
+      <th>
+        Slice
+      </th>
+      <th>
+        <input class="updateButton" type="submit" value="Update">
+      </th>
+      <th>
+        <input class="deleteButton" type="submit" value="Delete">
+      </th>
+    <tr>
+    </table>
+</div>
+
+<!-- /ul -->
+
+<router-outlet></router-outlet>
