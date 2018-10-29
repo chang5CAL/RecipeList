@@ -11,7 +11,10 @@ export class UsersComponent implements OnInit {
   User: User = {
   id: 1,
   username: "Justin",
-  password: "password"
+  password: "password",
+  savedRecipes: ["Sandwich"],
+  equipment: ["None"],
+  ingredients: ["Bread,Ham"]
   };
   showEquipment = false;
   showIngredients = false;
@@ -36,9 +39,7 @@ export class UsersComponent implements OnInit {
 
   ngOnInit() {}
 
-  public setTitle(){
-    this.titleService.setTitle( "User Panel" );
-  }
+  public setTitle(){}
 
 
 }
