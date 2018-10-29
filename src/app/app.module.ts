@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { UsersComponent } from './users/users.component';
 import { RecipesComponent } from './recipes/recipes.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
+import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 import { RegisterComponent } from './register/register.component';
 
 @NgModule({
@@ -15,6 +16,7 @@ import { RegisterComponent } from './register/register.component';
     UsersComponent,
     RecipesComponent,
     UserDetailComponent,
+    RecipeDetailComponent,
     RegisterComponent
   ],
   imports: [
