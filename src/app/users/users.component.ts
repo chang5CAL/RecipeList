@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../user';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-users',
@@ -35,11 +36,23 @@ export class UsersComponent implements OnInit {
     this.showIngredients = true;
   }
 
-  constructor() {}
+
+  //HTTP request from
+  //https://github.com/kuncevic/angular-httpclient-examples/blob/master/client/src/app/app.component.ts
+  constructor(private http: HttpClient) {}
 
   ngOnInit() {}
 
-  public setTitle(){}
+  //HTTP request from above source
+  callServerAddRecipe(port){
+  //Server number is hard coded here.
+  const headers = new HttpHeaders()
+    .set('Authorization','my-auth-token')
+    .set('Content-Type','application/json');
+    this.http.post<String>('/user/add/recipe/user1/test',JSON.stringify(this.User),{
+      headers: headers
+    })
+  }
 
 
 }
