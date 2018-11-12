@@ -30,7 +30,7 @@ http.createServer(function(req,res){
         pool.connect(function(err){
           if (err) throw err;
           console.log("User Registration Connected!");
-          var sql = "INSERT INTO `cs340_changle_users` "+ split[4] + ","+ split[5];
+          var sql = "INSERT INTO `cs340_changle_users` VALUES("+ split[4] + ","+ split[5]+")";
           //Probably terrible security here to transmit a password. If this were a web app,
           //I'd probably opt to implement Firebase or something.
           pool.query(sql,function(err,result,fields){
@@ -42,7 +42,7 @@ http.createServer(function(req,res){
         pool.connect(function(err){
           if (err) throw err;
           console.log("Recipe User Connected!");
-          var sql = "INSERT INTO `cs340_changle_users_recipe` "+ split[4] + ","+ split[5];
+          var sql = "INSERT INTO `cs340_changle_users_recipe` VALUES("+ split[4] + ","+ split[5]+")";
           //Probably terrible security here to transmit a password. If this were a web app,
           //I'd probably opt to implement Firebase or something.
           pool.query(sql,function(err,result,fields){
@@ -54,7 +54,7 @@ http.createServer(function(req,res){
         pool.connect(function(err){
           if (err) throw err;
           console.log("Ingredient User Connected!");
-          var sql = "INSERT INTO `cs340_changle_user_ingredients` "+ split[4] + "," + split[5];
+          var sql = "INSERT INTO `cs340_changle_user_ingredients` VALUES("+ split[4] + "," + split[5]+")";
 
           pool.query(sql,function(err,result,fields){
             if (err) throw err;
@@ -65,7 +65,7 @@ http.createServer(function(req,res){
         pool.connect(function(err){
           if (err) throw err;
           console.log("Equipment User Connected!");
-          var sql = "INSERT INTO `cs340_changle_user_equipment` " + split[4] + "," + split[5];
+          var sql = "INSERT INTO `cs340_changle_user_equipment` VALUES(" + split[4] + "," + split[5]+")";
           pool.query(sql,function(err,result,fields){
             if (err) throw err;
           });
@@ -84,9 +84,7 @@ http.createServer(function(req,res){
         pool.connect(function(err){
           if (err) throw err;
           console.log("Recipe Connected!");
-          var sql = "INSERT INTO `cs340_changle_recipe` "+ split[4] + "," + split[5] + "," + split[6] + "," + split[7];
-          //Probably terrible security here to transmit a password. If this were a web app,
-          //I'd probably opt to implement Firebase or something.
+          var sql = "INSERT INTO `cs340_changle_recipe` VALUES("+ split[4] + "," + split[5] + "," + split[6] + "," + split[7]+")";
           pool.query(sql,function(err,result,fields){
             if (err) throw err;
           });
@@ -96,7 +94,7 @@ http.createServer(function(req,res){
         pool.connect(function(err){
           if (err) throw err;
           console.log("Ingredient Recipe Connected!");
-          var sql = "INSERT INTO `cs340_changle_recipe_ingredients` "+ split[4] + "," + split[5];
+          var sql = "INSERT INTO `cs340_changle_recipe_ingredients` VALUES("+ split[4] + "," + split[5]+")";
 
           pool.query(sql,function(err,result,fields){
             if (err) throw err;
@@ -107,7 +105,7 @@ http.createServer(function(req,res){
         pool.connect(function(err){
           if (err) throw err;
           console.log("Equipment Recipe Connected!");
-          var sql = "INSERT INTO `cs340_changle_recipe_equipment` " + split[4] + "," + split[5];
+          var sql = "INSERT INTO `cs340_changle_recipe_equipment` VALUES (" + split[4] + "," + split[5]+")";
           pool.query(sql,function(err,result,fields){
             if (err) throw err;
           });
