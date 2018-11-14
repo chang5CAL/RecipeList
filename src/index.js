@@ -72,6 +72,64 @@ http.createServer(function(req,res){
         });
       }
     }
+    else if (split[2] == "update"){
+      if(split[3] == "user"){
+        pool.connect(function(err){
+          if (err) throw err;
+          console.log("Equipment User Connected!");
+          var sql = "UPDATE `cs340_changle_users` SET password = " + split[4] + " WHERE username = " + split[5];
+          pool.query(sql,function(err,result,fields){
+            if (err) throw err;
+          });
+        });
+      }
+      else if(split[3] == "ingredients"){
+        pool.connect(function(err){
+          if (err) throw err;
+          console.log("Equipment User Connected!");
+          var sql = "UPDATE `cs340_changle_user_ingredients` SET ingredientid = " + split[4] + "WHERE userid = " + split[5];
+          pool.query(sql,function(err,result,fields){
+            if (err) throw err;
+          });
+        });
+      }
+    }
+    else if (split[2] == "delete"){
+      if(split[3] == "recipe"){
+        pool.connect(function(err){
+          if (err) throw err;
+          console.log("Recipe User Connected!");
+          var sql = "DELETE FROM `cs340_changle_user_recipe` WHERE recipeid = " + split[4] " AND userid = " + split[5];
+          //Probably terrible security here to transmit a password. If this were a web app,
+          //I'd probably opt to implement Firebase or something.
+          pool.query(sql,function(err,result,fields){
+            if (err) throw err;
+          });
+        });
+      }
+      else if(split[3] == "ingredient"){
+        pool.connect(function(err){
+          if (err) throw err;
+          console.log("Ingredient User Connected!");
+          var sql = "DELETE FROM `cs340_changle_user_ingredients` WHERE ingredientid = " + split[4] " AND userid = " + split[5];
+
+          pool.query(sql,function(err,result,fields){
+            if (err) throw err;
+          });
+        });
+      }
+      else if(split[3] == "equipment"){
+        pool.connect(function(err){
+          if (err) throw err;
+          console.log("Equipment User Connected!");
+          var sql = "DELETE FROM `cs340_changle_user_equipment` WHERE equipmentid = " + split[4] " AND userid = " + split[5];
+
+          pool.query(sql,function(err,result,fields){
+            if (err) throw err;
+          });
+        });
+      }
+    }
     else{
       console.log("Not implemented.");
     }
@@ -112,8 +170,17 @@ http.createServer(function(req,res){
         });
       }
     }
-    else{
-      console.log("Not implemented.");
+    else if ("delete"){
+      if(split[3] == "equipment"){
+        pool.connect(function(err){
+          if (err) throw err;
+          console.log("Equipment Recipe Connected!");
+          var sql = "DELETE FROM `cs340_changle_user_recipe` WHERE recipeid = " + split[4] + " AND userid = " + split[5];
+          pool.query(sql,function(err,result,fields){
+            if (err) throw err;
+          });
+        });
+      }
     }
   }
   else{

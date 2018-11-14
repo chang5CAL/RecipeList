@@ -37,17 +37,18 @@ export class UsersComponent implements OnInit {
   }
 
 
-  //HTTP request from
-  //https://github.com/kuncevic/angular-httpclient-examples/blob/master/client/src/app/app.component.ts
+  //Constructor definition based off:
+  //https://angular.io/tutorial/toh-pt6
   constructor(private http: HttpClient) {}
 
   ngOnInit() {}
 
-  //HTTP request from above source
+  //HTTP request from
+  //https://github.com/kuncevic/angular-httpclient-examples/blob/master/client/src/app/app.component.ts
   callServerAddRecipe(port){
   //Server number is hard coded here.
   const headers = new HttpHeaders()
-    .set('Authorization','my-auth-token')
+    //.set('Authorization','my-auth-token')
     .set('Content-Type','application/json');
     this.http.post<String>('/user/add/recipe/user1/test',JSON.stringify(this.User),{
       headers: headers
