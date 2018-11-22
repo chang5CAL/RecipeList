@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../user';
+import { Recipe } from '../recipe';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
+
+const httpOptions = {
+  headers : new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Component({
   selector: 'app-users',
@@ -20,6 +27,17 @@ export class UsersComponent implements OnInit {
   showEquipment = false;
   showIngredients = false;
 
+  private userRecipesURL = "/user/read/recipe/";
+  private userIngredientsURL = "/user/read/ingredient/";
+  private userEquipmentURL = "/user/read/equipment/";
+
+  private userDeleteRecipesURL = "/user/delete/recipe/";
+  private userDeleteIngredientsURL = "/user/delete/ingredient/";
+  private userDeleteEquipmentURL = "/user/delete/equipment/";
+
+  private userUpdateIngredientsURL = "/user/update/ingredient/";
+
+
   recipeClicked(){
     this.showEquipment = false;
     this.showIngredients = false;
@@ -36,24 +54,74 @@ export class UsersComponent implements OnInit {
     this.showIngredients = true;
   }
 
-
   //Constructor definition based off:
   //https://angular.io/tutorial/toh-pt6
-  constructor(private http: HttpClient) {}
+  constructor(/*private http: HttpClient*/) {}
 
   ngOnInit() {}
 
   //HTTP request from
   //https://github.com/kuncevic/angular-httpclient-examples/blob/master/client/src/app/app.component.ts
-  callServerAddRecipe(port){
-  //Server number is hard coded here.
-  const headers = new HttpHeaders()
-    //.set('Authorization','my-auth-token')
-    .set('Content-Type','application/json');
-    this.http.post<String>('/user/add/recipe/user1/test',JSON.stringify(this.User),{
-      headers: headers
-    })
-  }
+/*
+    getUserRecipes (): Observable<Recipe[]> {
+    return this.http.get<Recipe[]>(this.userRecipesURL)
+      .pipe(
+        catchError(this.handleError('getUserRecipes',[]))
+      );
+    }
+
+    getUserIngredients (): Observable<Recipe[]> {
+    return this.http.get<Recipe[]>(this.recipesURL)
+      .pipe(
+        catchError(this.handleError('getRecipes',[]))
+      );
+    }
+
+    getUserEquipment (): Observable<Recipe[]> {
+    return this.http.get<Recipe[]>(this.recipesURL)
+      .pipe(
+        catchError(this.handleError('getRecipes',[]))
+      );
+    }
+
+    eraseUserRecipes (recipe: Recipe | id): Observable<Recipe[]> {
+    const deleteid = typeof recipe === 'id' ? recipe : recipe.id;
+    const url = this.userDeleteRecipesURL + deleteid;
+
+    return this.http.get<Recipe[]>(url, httpOptions)
+      .pipe(
+        catchError(this.handleError('deleteUserRecipe'))
+      );
+    }
+/*
+    eraseUserIngredients (): Observable<Recipe[]> {
+    return this.http.get<Recipe[]>(this.recipesURL)
+      .pipe(
+        catchError(this.handleError('getRecipes',[]))
+      );
+    }
+
+    eraseUserEquipment (): Observable<Recipe[]> {
+    return this.http.delete<Recipe[]>(this.recipesURL)
+      .pipe(
+        catchError(this.handleError('getRecipes',[]))
+      );
+    }
+
+    updateUserIngredients (): Observable<Recipe[]> {
+    return this.http.get<Recipe[]>(this.recipesURL)
+      .pipe(
+        catchError(this.handleError('getRecipes',[]))
+      );
+    }
+*/
+    private handleError<T> (operation = 'operation', result?: T){
+      return (error: any): Observable<T> => {
+        console.error(error);
+
+        return of(result as T);
+      }
+    }
 
 
 }

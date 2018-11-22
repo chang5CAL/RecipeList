@@ -130,6 +130,44 @@ http.createServer(function(req,res){
         });
       }
     }
+    else if (split[3] == "read"){
+      if(split[4] == "recipe"){
+        pool.connect(function(err){
+          if (err) throw err;
+          console.log("Recipe User Read Connected!");
+          var sql = "SELECT * FROM `cs340_changle_recipe` WHERE id IN (SELECT recipeid from 'cs340_changle_user_recipe' WHERE userID = "+
+          split[5];
+
+          pool.query(sql,function(err,result,fields){
+            if (err) throw err;
+          });
+        });
+      }
+      else if(split[4] == "ingredient"){
+        pool.connect(function(err){
+          if (err) throw err;
+          console.log("Ingredient User Read Connected!");
+          var sql = "SELECT * FROM `cs340_changle_ingredients` WHERE id IN (SELECT ingredientid from 'cs340_changle_user_ingredients' WHERE userID = "+
+          split[5];
+
+          pool.query(sql,function(err,result,fields){
+            if (err) throw err;
+          });
+        });
+      }
+      else if(split[4] == "equipment"){
+        pool.connect(function(err){
+          if (err) throw err;
+          console.log("Equipment User Connected!");
+          var sql = "SELECT * AS FROM `cs340_changle_equipment` WHERE id IN (SELECT equipmentid from 'cs340_changle_user_equipment' WHERE userID = "+
+          split[5];
+
+          pool.query(sql,function(err,result,fields){
+            if (err) throw err;
+          });
+        });
+      }
+    }
     else{
       console.log("Not implemented.");
     }
@@ -170,7 +208,7 @@ http.createServer(function(req,res){
         });
       }
     }
-    else if ("delete"){
+    else if (split[2] == "delete"){
       if(split[3] == "equipment"){
         pool.connect(function(err){
           if (err) throw err;
@@ -181,6 +219,16 @@ http.createServer(function(req,res){
           });
         });
       }
+    }
+    else if (split[2] == "read"){
+      pool.connect(function(err){
+        if (err) throw err;
+        console.log("Equipment Recipe Connected!");
+        var sql = "SELECT * frmo cs340_changle_recipe";
+        pool.query(sql,function(err,result,fields){
+          if (err) throw err;
+        });
+      });
     }
   }
   else{
