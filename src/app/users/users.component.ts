@@ -27,9 +27,9 @@ export class UsersComponent implements OnInit {
   showEquipment = false;
   showIngredients = false;
 
-  private userRecipesURL = "/user/read/recipe/";
-  private userIngredientsURL = "/user/read/ingredient/";
-  private userEquipmentURL = "/user/read/equipment/";
+  private userRecipesURL = "/user/read/recipe/" + User.id;
+  private userIngredientsURL = "/user/read/ingredient/" + User.id;
+  private userEquipmentURL = "/user/read/equipment/" + User.id;
 
   private userDeleteRecipesURL = "/user/delete/recipe/";
   private userDeleteIngredientsURL = "/user/delete/ingredient/";
