@@ -42,7 +42,7 @@ export class RecipesComponent implements OnInit {
 
 
   ngOnInit() {
-    this.getRecipes().subscribe(Recipe => this.Recipes = Recipe);
+    //this.getRecipes().subscribe(Recipe => this.Recipes = Recipe);
   }
 
 }

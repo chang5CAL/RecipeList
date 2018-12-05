@@ -29,7 +29,7 @@ export class IngredientsComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    this.getUserIngredients().subscribe(Ingredient => this.Ingredients = Ingredient);
+    //this.getUserIngredients().subscribe(Ingredient => this.Ingredients = Ingredient);
   }
 
     //HTTP request from

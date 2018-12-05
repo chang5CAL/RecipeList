@@ -29,7 +29,7 @@ export class EquipmentComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getUserEquipment().subscribe(Equipment => this.userEquipment = Equipment);
+    //this.getUserEquipment().subscribe(Equipment => this.userEquipment = Equipment);
   }
 
     //HTTP request from

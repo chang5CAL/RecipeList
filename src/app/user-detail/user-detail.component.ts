@@ -28,7 +28,7 @@ export class UserDetailComponent implements OnInit {
 
 
   ngOnInit() {
-    this.getUserRecipes().subscribe(Recipe => this.Recipes = Recipe);
+    //this.getUserRecipes().subscribe(Recipe => this.Recipes = Recipe);
   }
 
   removeRecipe(id: number): void {
