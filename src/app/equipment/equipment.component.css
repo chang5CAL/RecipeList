@@ -1,0 +1,38 @@
+table{
+  border: 1px solid black;
+  align-self: center;
+}
+
+tr{
+  border: 1px solid black;
+}
+
+th{
+  border: 1px solid black;
+}
+
+nav{
+  margin-left:35%;
+}
+
+.hidden{
+  visibility: hidden;
+}
+
+.header{
+  text-align: center;
+}
+
+.divTables{
+  position: absolute;
+  margin-left:30%;
+  width: 30%;
+}
+
+.navbarHeader{
+  margin-left:45%;
+}
+
+.tableHeaders{
+  margin-left:50%;
+}

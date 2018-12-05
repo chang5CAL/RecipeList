@@ -3,4 +3,5 @@ export class Recipe {
   name: string;
   ingredients: string[];
   equipment: string[];
+  source: string;
 };

@@ -1,3 +1,32 @@
-<p>
-  equipment works!
-</p>
+<h2 class="tableHeaders">Equipment</h2>
+
+    <form>
+      <table>
+        <tr>
+          <th>Add Equipment: </th><th><input type="text"></th>
+        </tr>
+      </table>
+      <input type="submit" value="Add">
+
+    </form>
+    <br>
+    <table>
+      <tr>
+        <th>
+          Equipment
+        </th>
+        <th>
+          Remove
+        </th>
+      </tr>
+
+        <tr *ngFor="let equipment of userEquipment">
+          <th>
+            {{ equipment.name }}
+          </th>
+          <th>
+            <input class="deleteButton" type="submit" value="Delete">
+          </th>
+        </tr>
+
+    </table>

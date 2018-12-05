@@ -5,14 +5,16 @@ var http = require('http');
 var mysql = require('mysql');
 var url = require('url');
 var fs = require('fs');
+var express = require('express');
+var app = express();
 
 //Copied from http://classes.engr.oregonstate.edu/eecs/spring2018/cs340-400/using_node_on_engr_servers/index.html
 var pool = mysql.createConnection({
-  connectionLimit : 10,
-  host            : 'localhost',
-  database        : 'cs340db',
-  user            : 'root',
-  password        : 'password',
+  connectionLimit : 1,
+  host            : 'den1.mssql7.gear.host',
+  database        : 'recipelist',
+  user            : 'recipelist',
+  password        : 'Tz9N_5d4n7B~',
 });
 //I should note, the table should already exist.
 
